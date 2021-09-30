@@ -7,7 +7,9 @@ public class FlightChange extends EventChange {
 
     public FlightChange(Flight flight){
 
-        apply((FlightCreated event)->{});
+        apply((FlightCreated event)->{
+            flight.flightStatus=event.getFlightStatus();
+        });
 
     }
 }

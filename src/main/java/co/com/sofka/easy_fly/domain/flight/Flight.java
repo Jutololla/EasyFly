@@ -14,12 +14,10 @@ public class Flight extends AggregateEvent<FlightId> {
     protected Plane plane;
     protected FlightStatus flightStatus;
 
-    public Flight() {
-        super(new FlightId());
-        appendChange(new FlightCreated()).apply();
+    public Flight(FlightId entityId, FlightStatus flightStatus) {
+        super(entityId);
+        appendChange(new FlightCreated(flightStatus)).apply();
     }
-
-
 
     private Flight(FlightId entityId){
         super(entityId);
@@ -31,4 +29,12 @@ public class Flight extends AggregateEvent<FlightId> {
         events.forEach(flight::applyEvent);
         return flight;
         }
+    //<comportamientos de la funcion/>
+
+    //getters
+
+
+    public FlightStatus FlightStatus() {
+        return flightStatus;
+    }
 }

@@ -16,8 +16,8 @@ public class createFlightUseCase extends UseCase<createFlightUseCase.Request, cr
         //en est espacio se recrea el objeto a crear, creando uno nuevo
         // y asignandole los atributos traidos por el Request, pero como en mi caso solo es el ID.
 
-        var flight = new Flight(request.getId());
-        List<DomainEvent> eventList=
+//        var flight = new Flight(request.getId());
+//        List<DomainEvent> eventList=
     }
 
     public static class Request implements UseCase.RequestValues{
