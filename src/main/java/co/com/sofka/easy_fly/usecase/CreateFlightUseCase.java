@@ -14,7 +14,7 @@ public class CreateFlightUseCase extends UseCase<RequestCommand<CreateFlight>, R
         var command = createFlightRequestCommand.getCommand();
 
         var flight = new Flight(
-                command.getEntityId(),
+                command.getFlightId(),
                 command.getFlightStatus());
 
         emit().onResponse(new ResponseEvents(flight.getUncommittedChanges()));

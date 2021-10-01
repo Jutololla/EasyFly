@@ -2,10 +2,10 @@ package co.com.sofka.easy_fly.domain.flight;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
-import co.com.sofka.easy_fly.domain.flight.event.ScheduleAdded;
-import co.com.sofka.easy_fly.domain.flight.event.ScheduledChanged;
+import co.com.sofka.easy_fly.domain.flight.event.*;
 import co.com.sofka.easy_fly.domain.flight.values.*;
+import co.com.sofka.easy_fly.domain.shared.Email;
+import co.com.sofka.easy_fly.domain.shared.Name;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,5 +44,11 @@ public class Flight extends AggregateEvent<FlightId> {
     public void changeSchedule(ScheduleId scheduleId, InRoomDateTime inRoomDateTime, DepartureDateTime departureDateTime, FlightDuration flightDuration){
         appendChange(new ScheduledChanged(scheduleId, inRoomDateTime, departureDateTime, flightDuration)).apply();
     }
+
+    public void addPlane(PlaneId entityId, Model model){
+        appendChange(new PlaneAdded(entityId, model)).apply();
+    }
+
+    public void addPilot(PilotId entityId, Name name, Email email) { new PilotAdded(entityId, name, email);}
 
 }

@@ -1,9 +1,7 @@
 package co.com.sofka.easy_fly.domain.flight;
 
 import co.com.sofka.domain.generic.EventChange;
-import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
-import co.com.sofka.easy_fly.domain.flight.event.ScheduleAdded;
-import co.com.sofka.easy_fly.domain.flight.event.ScheduledChanged;
+import co.com.sofka.easy_fly.domain.flight.event.*;
 
 public class FlightChange extends EventChange {
 
@@ -11,6 +9,13 @@ public class FlightChange extends EventChange {
 
         apply((FlightCreated event) -> {
             flight.flightStatus = event.getFlightStatus();
+        });
+
+        apply((PilotAdded event) -> {
+            flight.pilot = new Pilot(
+                    event.getEntityId(),
+                    event.getName(),
+                    event.getEmail());
         });
 
         apply((ScheduleAdded event) -> {
@@ -23,19 +28,16 @@ public class FlightChange extends EventChange {
         });
 
         apply((ScheduledChanged event) -> {
-                    flight.schedule.setInRoomDateTime(event.getInRoomDateTime());
-                    flight.schedule.setDepartureDateTime(event.getDepartureDateTime());
-                    flight.schedule.setFlightDuration(event.getFlightDuration());
-                });
+            flight.schedule.setInRoomDateTime(event.getInRoomDateTime());
+            flight.schedule.setDepartureDateTime(event.getDepartureDateTime());
+            flight.schedule.setFlightDuration(event.getFlightDuration());
+        });
 
-
-
-
-
-
-
-
-
+        apply((PlaneAdded event) -> {
+            flight.plane = new Plane(
+                    event.getPlaneId(),
+                    event.getModel());
+        });
 
 
     }

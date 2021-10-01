@@ -5,16 +5,16 @@ import co.com.sofka.easy_fly.domain.flight.values.FlightId;
 import co.com.sofka.easy_fly.domain.flight.values.FlightStatus;
 
 public class CreateFlight extends Command {
-    private final FlightId entityId;
+    private final FlightId flightId;
     private final FlightStatus flightStatus;
 
-    public CreateFlight(FlightId entityId, FlightStatus flightStatus) {
-        this.entityId = entityId;
+    public CreateFlight(FlightId flightId, FlightStatus flightStatus) {
+        this.flightId = flightId;
         this.flightStatus = flightStatus;
     }
 
-    public FlightId getEntityId() {
-        return entityId;
+    public FlightId getFlightId() {
+        return flightId;
     }
 
     public FlightStatus getFlightStatus() {
