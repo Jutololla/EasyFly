@@ -3,8 +3,7 @@ package co.com.sofka.easy_fly.domain.flight;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
-import co.com.sofka.easy_fly.domain.flight.values.FlightId;
-import co.com.sofka.easy_fly.domain.flight.values.FlightStatus;
+import co.com.sofka.easy_fly.domain.flight.values.*;
 
 import java.util.List;
 
@@ -24,17 +23,19 @@ public class Flight extends AggregateEvent<FlightId> {
         subscribe(new FlightChange(this));
         }
 
-        public static Flight from(FlightId entityId, List<DomainEvent> events){
+    public static Flight from(FlightId entityId, List<DomainEvent> events){
         var flight = new Flight(entityId);
         events.forEach(flight::applyEvent);
         return flight;
         }
-    //<comportamientos de la funcion/>
-
-    //getters
-
 
     public FlightStatus FlightStatus() {
         return flightStatus;
     }
+    //<comportamientos de la funcion/>
+
+    public void addSchedule(ScheduleId entityId, InRoomDateTime inRoomDateTime, DepartureDateTime departureDateTime, FlightDuration flightDuration){
+        appendChange(new ScheduleCreated(entityId,inRoomDateTime, departureDateTime, flightDuration)).apply();
+    }
+
 }

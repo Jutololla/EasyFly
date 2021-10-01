@@ -4,14 +4,26 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class FlightStatus implements ValueObject<Integer> {
-    private final Integer value;
+public class FlightStatus implements ValueObject<String> {
+    private final String value;
 
-    public FlightStatus(Integer value) {
-        this.value = Objects.requireNonNull(value);
+    public FlightStatus() {
+        this.value="Pending";
     }
 
-    public Integer value() {
+    public FlightStatus(String value) {
+        if(value.isEmpty()||value.isBlank()){
+            this.value="Pending";
+        }
+        else{this.value = value;};
+    }
+
+    public static FlightStatus of(String flightStatus){
+        return new FlightStatus(flightStatus);
+    }
+
+    @Override
+    public String value() {
         return value;
     }
 
