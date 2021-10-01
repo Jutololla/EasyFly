@@ -4,9 +4,11 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
 import co.com.sofka.easy_fly.domain.flight.event.ScheduleAdded;
+import co.com.sofka.easy_fly.domain.flight.event.ScheduledChanged;
 import co.com.sofka.easy_fly.domain.flight.values.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Flight extends AggregateEvent<FlightId> {
     protected Schedule schedule;
@@ -37,6 +39,10 @@ public class Flight extends AggregateEvent<FlightId> {
 
     public void addSchedule(ScheduleId scheduleId, InRoomDateTime inRoomDateTime, DepartureDateTime departureDateTime, FlightDuration flightDuration){
         appendChange(new ScheduleAdded(scheduleId, inRoomDateTime, departureDateTime, flightDuration)).apply();
+    }
+
+    public void changeSchedule(ScheduleId scheduleId, InRoomDateTime inRoomDateTime, DepartureDateTime departureDateTime, FlightDuration flightDuration){
+        appendChange(new ScheduledChanged(scheduleId, inRoomDateTime, departureDateTime, flightDuration)).apply();
     }
 
 }

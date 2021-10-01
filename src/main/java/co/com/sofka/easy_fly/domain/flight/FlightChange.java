@@ -3,6 +3,7 @@ package co.com.sofka.easy_fly.domain.flight;
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
 import co.com.sofka.easy_fly.domain.flight.event.ScheduleAdded;
+import co.com.sofka.easy_fly.domain.flight.event.ScheduledChanged;
 
 public class FlightChange extends EventChange {
 
@@ -20,6 +21,22 @@ public class FlightChange extends EventChange {
                     event.getFlightDuration()
             );
         });
+
+        apply((ScheduledChanged event) -> {
+                    flight.schedule.setInRoomDateTime(event.getInRoomDateTime());
+                    flight.schedule.setDepartureDateTime(event.getDepartureDateTime());
+                    flight.schedule.setFlightDuration(event.getFlightDuration());
+                });
+
+
+
+
+
+
+
+
+
+
 
     }
 }
