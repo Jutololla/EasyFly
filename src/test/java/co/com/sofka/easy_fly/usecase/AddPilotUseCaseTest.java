@@ -12,6 +12,7 @@ import co.com.sofka.easy_fly.domain.flight.values.FlightStatus;
 import co.com.sofka.easy_fly.domain.flight.values.PilotId;
 import co.com.sofka.easy_fly.domain.shared.Email;
 import co.com.sofka.easy_fly.domain.shared.Name;
+import co.com.sofka.easy_fly.usecase.flight.AddPilotUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,13 +43,13 @@ class AddPilotUseCaseTest {
         Mockito.when(repository.getEventsBy(command.getPilotId().value())).thenReturn(EventRestore());
         useCase.addRepository(repository);
 
-        //ACT
+        //Act
         var events = UseCaseHandler.getInstance()
                 .setIdentifyExecutor(command.getPilotId().value())
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
-        var eventPilotAdded = (PilotAdded) events.get(0);
+        var eventPilotAdded = (PilotAdded)events.get(0);
 
         //Assert
         Assertions.assertEquals("PEPE", eventPilotAdded.getName().value());

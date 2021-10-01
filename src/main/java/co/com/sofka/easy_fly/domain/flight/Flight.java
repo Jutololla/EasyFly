@@ -16,10 +16,6 @@ public class Flight extends AggregateEvent<FlightId> {
     protected Plane plane;
     protected FlightStatus flightStatus;
 
-    public FlightStatus FlightStatus() {
-        return flightStatus;
-    }
-
     public Flight(FlightId entityId, FlightStatus flightStatus) {
         super(entityId);
         appendChange(new FlightCreated(flightStatus)).apply();
@@ -35,6 +31,10 @@ public class Flight extends AggregateEvent<FlightId> {
         events.forEach(flight::applyEvent);
         return flight;
         }
+
+    public FlightStatus FlightStatus() {
+        return flightStatus;
+    }
     //<comportamientos de la funcion/>
 
     public void addSchedule(ScheduleId scheduleId, InRoomDateTime inRoomDateTime, DepartureDateTime departureDateTime, FlightDuration flightDuration){
@@ -49,6 +49,7 @@ public class Flight extends AggregateEvent<FlightId> {
         appendChange(new PlaneAdded(entityId, model)).apply();
     }
 
-    public void addPilot(PilotId entityId, Name name, Email email) { new PilotAdded(entityId, name, email);}
+    public void addPilot(PilotId entityId, Name name, Email email) {
+        appendChange(new PilotAdded(entityId, name, email));}
 
 }

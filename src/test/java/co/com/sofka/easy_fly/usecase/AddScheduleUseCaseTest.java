@@ -8,6 +8,7 @@ import co.com.sofka.easy_fly.domain.flight.command.AddSchedule;
 import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
 import co.com.sofka.easy_fly.domain.flight.event.ScheduleAdded;
 import co.com.sofka.easy_fly.domain.flight.values.*;
+import co.com.sofka.easy_fly.usecase.flight.AddScheduleUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,10 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class AddScheduleUseCaseTest {

@@ -6,6 +6,7 @@ import co.com.sofka.easy_fly.domain.flight.command.CreateFlight;
 import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
 import co.com.sofka.easy_fly.domain.flight.values.FlightId;
 import co.com.sofka.easy_fly.domain.flight.values.FlightStatus;
+import co.com.sofka.easy_fly.usecase.flight.CreateFlightUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

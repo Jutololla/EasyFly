@@ -11,6 +11,7 @@ import co.com.sofka.easy_fly.domain.flight.values.FlightId;
 import co.com.sofka.easy_fly.domain.flight.values.FlightStatus;
 import co.com.sofka.easy_fly.domain.flight.values.Model;
 import co.com.sofka.easy_fly.domain.flight.values.PlaneId;
+import co.com.sofka.easy_fly.usecase.flight.AddPlaneUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,8 +21,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class AddPlaneUseCaseTest {

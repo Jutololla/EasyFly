@@ -1,6 +1,5 @@
 package co.com.sofka.easy_fly.usecase;
 
-import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
@@ -10,6 +9,7 @@ import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
 import co.com.sofka.easy_fly.domain.flight.event.ScheduleAdded;
 import co.com.sofka.easy_fly.domain.flight.event.ScheduledChanged;
 import co.com.sofka.easy_fly.domain.flight.values.*;
+import co.com.sofka.easy_fly.usecase.flight.ChangeScheduleUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,8 +22,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class ChangeScheduleUseCaseTest {
