@@ -7,13 +7,15 @@ import co.com.sofka.easy_fly.domain.flight.event.FlightCreated;
 import co.com.sofka.easy_fly.domain.flight.values.FlightId;
 import co.com.sofka.easy_fly.domain.flight.values.FlightStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
 class createFlightUseCaseTest {
 
     @Test
-    void validValuesCase_CreateFlight(){
+    @DisplayName("Test the creation of a flight when valid FlightId and FlightStatus are provided")
+    void validArgumentsCase_CreateFlight(){
         //arrange
         var command = new CreateFlight(
                 FlightId.of("xxxxx"),
@@ -31,7 +33,8 @@ class createFlightUseCaseTest {
 
     }
     @Test
-    void NoDataCase_CreateFlight(){
+    @DisplayName("Test the creation of a flight when FlightId and FlightStatus aren't provided")
+    void NoArgumentsCase_CreateFlight(){
         //arrange
         var command = new CreateFlight(
                 new FlightId(),

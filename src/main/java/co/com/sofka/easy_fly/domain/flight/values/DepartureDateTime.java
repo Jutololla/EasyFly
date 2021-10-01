@@ -9,8 +9,13 @@ public class DepartureDateTime implements ValueObject<LocalDateTime> {
     private final LocalDateTime value;
 
     public DepartureDateTime(LocalDateTime value) {
-        this.value = Objects.requireNonNull(value);
+        if (value.isAfter(LocalDateTime.now())) {
+            this.value = Objects.requireNonNull(value);
+        } else {
+            throw new IllegalArgumentException("The value of DepartureDateTime can't be before the actual time");
+        }
     }
+
 
     @Override
     public LocalDateTime value() {

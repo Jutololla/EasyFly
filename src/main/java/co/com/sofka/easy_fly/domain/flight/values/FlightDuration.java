@@ -9,12 +9,17 @@ public class FlightDuration implements ValueObject<LocalTime> {
     private final LocalTime value;
 
     public FlightDuration(LocalTime value) {
-        this.value = Objects.requireNonNull(value);
+        if(value.isAfter(LocalTime.of(0,0))){
+            this.value = Objects.requireNonNull(value);
+        }
+        else{
+            throw new IllegalArgumentException("The flight duration can't be negative");
+        }
     }
 
     @Override
     public LocalTime value() {
-        return null;
+        return value;
     }
 
     @Override
@@ -28,5 +33,10 @@ public class FlightDuration implements ValueObject<LocalTime> {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return ""+value;
     }
 }

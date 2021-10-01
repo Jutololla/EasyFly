@@ -19,7 +19,7 @@ public class Schedule extends Entity<ScheduleId> {
         super(entityId);
     }
 
-    protected Schedule(ScheduleId entityId, InRoomDateTime inRoomDateTime, DepartureDateTime departureDateTime, FlightDuration flightDuration) {
+    public Schedule(ScheduleId entityId, InRoomDateTime inRoomDateTime, DepartureDateTime departureDateTime, FlightDuration flightDuration) {
         super(entityId);
         this.inRoomDateTime = inRoomDateTime;
         this.departureDateTime = departureDateTime;
