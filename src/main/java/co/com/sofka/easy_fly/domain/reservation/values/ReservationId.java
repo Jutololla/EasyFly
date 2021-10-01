@@ -9,6 +9,7 @@ public class ReservationId  extends Identity {
     }
 
     public ReservationId() {
+        super();
     }
 
     public static ReservationId of(String id) {

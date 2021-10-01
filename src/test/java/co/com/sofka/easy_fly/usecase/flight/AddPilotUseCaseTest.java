@@ -1,4 +1,4 @@
-package co.com.sofka.easy_fly.usecase;
+package co.com.sofka.easy_fly.usecase.flight;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;

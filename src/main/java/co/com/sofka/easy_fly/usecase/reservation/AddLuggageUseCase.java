@@ -13,9 +13,11 @@ public class AddLuggageUseCase extends UseCase<RequestCommand<AddLuggage>, Respo
 
         var reservation = Reservation.from(command.getReservationId(), retrieveEvents(command.getReservationId().value()));
 
-        reservation.addLuggage(command.getLuggageId(),
+        reservation.addLuggage(
+                command.getLuggageId(),
                 command.getBaggagePieces(),
-                command.getHandLuggagePieces());
+                command.getHandLuggagePieces()
+        );
 
         emit().onResponse(new ResponseEvents(reservation.getUncommittedChanges()));
     }
