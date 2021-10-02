@@ -54,10 +54,10 @@ class AddLuggageUseCaseTest {
         var eventPilotAdded = (LuggageAdded)events.get(0);
 
         //Assert
-        Assertions.assertEquals("GGF", command.getReservationId().value());
-        Assertions.assertEquals("JJDS", command.getLuggageId().value());
-        Assertions.assertEquals(2,command.getBaggagePieces().value());
-        Assertions.assertEquals(2,command.getHandLuggagePieces().value());
+        Assertions.assertEquals("GGF", eventPilotAdded.aggregateRootId());
+        Assertions.assertEquals("JJDS", eventPilotAdded.getLuggageId().value());
+        Assertions.assertEquals(2,eventPilotAdded.getBaggagePieces().value());
+        Assertions.assertEquals(2,eventPilotAdded.getHandLuggagePieces().value());
 
 
 

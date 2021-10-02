@@ -57,10 +57,10 @@ class AddPassengerUseCaseTest {
         var eventPilotAdded = (PassengerAdded)events.get(0);
 
         //Assert
-        Assertions.assertEquals("456",command.getPassengerId().value());
-        Assertions.assertEquals("Juan",command.getName().value());
-        Assertions.assertEquals("1551", command.getPhoneNumber().value());
-        Assertions.assertEquals("carlos@calor.co", command.getEmail().value());
+        Assertions.assertEquals("456",eventPilotAdded.getPassengerId().value());
+        Assertions.assertEquals("Juan",eventPilotAdded.getName().value());
+        Assertions.assertEquals("1551", eventPilotAdded.getPhoneNumber().value());
+        Assertions.assertEquals("carlos@calor.co", eventPilotAdded.getEmail().value());
 
   }
 

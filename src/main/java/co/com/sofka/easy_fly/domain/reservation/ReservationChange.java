@@ -1,10 +1,7 @@
 package co.com.sofka.easy_fly.domain.reservation;
 
 import co.com.sofka.domain.generic.EventChange;
-import co.com.sofka.easy_fly.domain.reservation.event.EmergencyContactAdded;
-import co.com.sofka.easy_fly.domain.reservation.event.LuggageAdded;
-import co.com.sofka.easy_fly.domain.reservation.event.PassengerAdded;
-import co.com.sofka.easy_fly.domain.reservation.event.ReservationCreated;
+import co.com.sofka.easy_fly.domain.reservation.event.*;
 import co.com.sofka.easy_fly.domain.reservation.values.LuggageId;
 import co.com.sofka.easy_fly.domain.reservation.values.ReservationId;
 
@@ -40,6 +37,12 @@ public class ReservationChange extends EventChange {
                     event.getPhoneNumber(),
                     event.getEmail()
             );
+        });
+
+        apply((PassengerChanged event) ->{
+            reservation.passenger.setName(event.getName());
+            reservation.passenger.setPhoneNumber(event.getPhoneNumber());
+            reservation.passenger.setEmail(event.getEmail());
         });
 
 

@@ -2,10 +2,7 @@ package co.com.sofka.easy_fly.domain.reservation;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.easy_fly.domain.flight.values.FlightId;
-import co.com.sofka.easy_fly.domain.reservation.event.EmergencyContactAdded;
-import co.com.sofka.easy_fly.domain.reservation.event.LuggageAdded;
-import co.com.sofka.easy_fly.domain.reservation.event.PassengerAdded;
-import co.com.sofka.easy_fly.domain.reservation.event.ReservationCreated;
+import co.com.sofka.easy_fly.domain.reservation.event.*;
 import co.com.sofka.easy_fly.domain.reservation.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.easy_fly.domain.shared.Email;
@@ -57,6 +54,10 @@ public class Reservation extends AggregateEvent<ReservationId> {
 
     public void addPassenger(PassengerId passengerId, Name name, PhoneNumber phoneNumber, Email email){
         appendChange(new PassengerAdded(passengerId,name,phoneNumber,email));
+    }
+
+    public void changePassenger(PassengerId passengerId, Name name, PhoneNumber phoneNumber, Email email){
+        appendChange(new PassengerChanged(passengerId,name,phoneNumber,email));
     }
 }
 

@@ -54,9 +54,9 @@ class AddEmergencyContactUseCaseTest {
         var eventEmergencyContactAdded = (EmergencyContactAdded)events.get(0);
 
         //Assert
-        Assertions.assertEquals("LLKL", command.getEmergencyContactId().value());
-        Assertions.assertEquals("Pedro Manjarrez", command.getName().value());
-        Assertions.assertEquals("01234567890",command.getPhoneNumber().value());
+        Assertions.assertEquals("LLKL", eventEmergencyContactAdded.getEmergencyContactId().value());
+        Assertions.assertEquals("Pedro Manjarrez", eventEmergencyContactAdded.getName().value());
+        Assertions.assertEquals("01234567890",eventEmergencyContactAdded.getPhoneNumber().value());
 
     }
 
