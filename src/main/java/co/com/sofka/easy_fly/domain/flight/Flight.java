@@ -50,6 +50,10 @@ public class Flight extends AggregateEvent<FlightId> {
     }
 
     public void addPilot(PilotId entityId, Name name, Email email) {
-        appendChange(new PilotAdded(entityId, name, email));}
+        appendChange(new PilotAdded(entityId, name, email)).apply();}
+
+    public void changeFlightStatusDueToScheduledChanged(FlightId flightId, FlightStatus flightStatus){
+        appendChange(new FlightStatusChangedDueToScheduleChanged(flightId, flightStatus)).apply();
+    }
 
 }

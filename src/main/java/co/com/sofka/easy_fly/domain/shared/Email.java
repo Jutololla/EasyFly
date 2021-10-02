@@ -12,21 +12,21 @@ public class Email implements ValueObject<String> {
     }
 
     public String value() {
-        return value;
+        return Objects.requireNonNull(value);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Email)) return false;
-        Email email = (Email) o;
-        return Objects.equals(value, email.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Email)) return false;
+//        Email email = (Email) o;
+//        return Objects.equals(value, email.value);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(value);
+//    }
 
 
 }

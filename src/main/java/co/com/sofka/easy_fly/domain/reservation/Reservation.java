@@ -53,11 +53,15 @@ public class Reservation extends AggregateEvent<ReservationId> {
     }
 
     public void addPassenger(PassengerId passengerId, Name name, PhoneNumber phoneNumber, Email email){
-        appendChange(new PassengerAdded(passengerId,name,phoneNumber,email));
+        appendChange(new PassengerAdded(passengerId,name,phoneNumber,email)).apply();
     }
 
     public void changePassenger(PassengerId passengerId, Name name, PhoneNumber phoneNumber, Email email){
-        appendChange(new PassengerChanged(passengerId,name,phoneNumber,email));
+        appendChange(new PassengerChanged(passengerId,name,phoneNumber,email)).apply();
+    }
+
+    public void sendAlertByReservationCreated(String message){
+        appendChange(new AlertSentByReservationCreated(message)).apply();
     }
 }
 

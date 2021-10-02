@@ -2,6 +2,8 @@ package co.com.sofka.easy_fly.domain.flight;
 
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.easy_fly.domain.flight.event.*;
+import co.com.sofka.easy_fly.domain.flight.values.FlightStatus;
+import co.com.sofka.easy_fly.usecase.flight.FlightStatusChangedDueToScheduleChangedUseCase;
 
 public class FlightChange extends EventChange {
 
@@ -38,6 +40,11 @@ public class FlightChange extends EventChange {
                     event.getPlaneId(),
                     event.getModel());
         });
+
+        apply((FlightStatusChangedDueToScheduleChanged event) -> {
+            flight.flightStatus = event.getFlightStatus();
+        });
+
 
 
     }
